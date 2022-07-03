@@ -3,6 +3,10 @@
 -----------------------------------------------------------
 
 local opt = vim.opt  -- to set options
+local set = vim.opt  -- to set options
+local g = vim.g
+local wo = vim.wo
+local bo = vim.bo
 
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
@@ -12,8 +16,15 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+
+
+-- VIM_KEYS: Remap of basic keys !!!
+
 -- Change leader to a comma
 vim.g.mapleader = ','
+
+-- Map Esc to kk
+map('i', 'kk', '<Esc>')
 
 
 -------------------- PLUGINS -------------------------------
@@ -59,15 +70,19 @@ vim.g.mapleader = ','
 -- Neovim shortcuts Mapping
 -----------------------------------------------------------
 
+-- MOVING: Cursors and arrows
+
 -- Disable arrow keys
 -- map('', '<up>', '<nop>')
 -- map('', '<down>', '<nop>')
 -- map('', '<left>', '<nop>')
 -- map('', '<right>', '<nop>')
 
+-- Cursors
+wo.cursorline = true
+wo.nu = true
+wo.rnu = true
 
--- Map Esc to kk
-map('i', 'kk', '<Esc>')
 
 -- Clear search highlighting with <leader> and c
 -- map('n', '<leader>c', ':nohl<CR>')
@@ -78,6 +93,8 @@ map('n', '<leader>o', 'm`o<Esc>``')  -- Insert a newline in normal mode
 map('n', '<F2>', ':set invpaste paste?<CR>')
 vim.opt.pastetoggle = '<F2>'
 
+
+-- WINDOWS: 
 -- Change split orientation
 -- map('n', '<leader>tk', '<C-w>t<C-w>K') -- change vertical to horizontal
 -- map('n', '<leader>th', '<C-w>t<C-w>H') -- change horizontal to vertical
@@ -105,12 +122,28 @@ map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 map("n", "<S-l>", [[ <Cmd> set nu! <CR>]], opt)
 map("n", "<S-r>", [[ <Cmd>set relativenumber<CR>]], opt)
 
-
--- Text mappings
+-------------------
+-- Text mappings --
+-------------------
 map('', '<leader>c', '"+y')       -- Copy to clipboard in normal, visual, select and operator modes
 map('i', '<C-u>', '<C-g>u<C-u>')  -- Make <C-u> undo-friendly
 map('i', '<C-w>', '<C-g>u<C-w>')  -- Make <C-w> undo-friendly
 map('n', 'P','"0p')       -- Paste the last yy. Not the last dd.
+
+-- Tab as 4 spaces
+-- filetype plugin indent on
+-- " show existing tab with 4 spaces width
+set.tabstop=4
+set.softtabstop=4
+-- " when indenting with '>', use 4 spaces width
+set.shiftwidth=4
+-- " On pressing tab, insert 4 spaces
+bo.expandtab=true
+
+-- Retab : All tabs in file => 4spaces 
+-- set expandtab ts=4 sw=4 ai
+-- You can replace all the tabs with spaces in the entire file with
+-- :%retab
 
 
 
@@ -119,7 +152,7 @@ map('n', 'P','"0p')       -- Paste the last yy. Not the last dd.
 -----------------------------------------------------------
 
 -- Terminal mappings
-map('n', '<C-t>', ':Term<CR>', { noremap = true })  -- open
+-- map('n', '<C-T>', ':Term<CR>', { noremap = true })  -- open
 map('t', '<C-w>', '<Esc><C-\\><C-N><C-w>')          -- exit and move to next window with arrow.
 map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
 

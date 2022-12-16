@@ -7,6 +7,7 @@
 
 
 -- Imports the plugin's additional Lua modules.
+require("advim_cfg.advim_plugins")
 -- local mappings = 
 require("advim_cfg.advim_mappings")
 

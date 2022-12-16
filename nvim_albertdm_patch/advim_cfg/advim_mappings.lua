@@ -21,11 +21,27 @@ end
 -- VIM_KEYS: Remap of basic keys !!!
 
 -- Change leader to a comma
+-- <leader> = , 
 vim.g.mapleader = ','
 
 -- Map Esc to kk
 map('i', 'kk', '<Esc>')
 
+-- "*****************************************************************************
+-- "" Abbreviations
+-- "*****************************************************************************
+-- "" no one is really happy until you have this shortcuts
+-- cnoreabbrev W! w!
+-- cnoreabbrev Q! q!
+-- cnoreabbrev Qall! qall!
+-- cnoreabbrev Wq wq
+-- cnoreabbrev Wa wa
+-- cnoreabbrev wQ wq
+-- cnoreabbrev WQ wq
+-- cnoreabbrev W w
+-- cnoreabbrev Q q
+-- cnoreabbrev Qall qall
+--
 
 -------------------- PLUGINS -------------------------------
 -- cmd 'packadd paq-nvim'               -- load the package manager
@@ -126,6 +142,7 @@ map("n", "<S-r>", [[ <Cmd>set relativenumber<CR>]], opt)
 -- Text mappings --
 -------------------
 map('', '<leader>c', '"+y')       -- Copy to clipboard in normal, visual, select and operator modes
+-- map('', '<y', '"+y')       -- Copy to clipboard in normal, visual, select and operator modes
 map('i', '<C-u>', '<C-g>u<C-u>')  -- Make <C-u> undo-friendly
 map('i', '<C-w>', '<C-g>u<C-w>')  -- Make <C-w> undo-friendly
 map('n', 'P','"0p')       -- Paste the last yy. Not the last dd.
@@ -144,6 +161,13 @@ bo.expandtab=true
 -- set expandtab ts=4 sw=4 ai
 -- You can replace all the tabs with spaces in the entire file with
 -- :%retab
+
+-- Clipboard --
+--  :echo has('clipboard') 
+--      if returns 0 : vim has not been compiled with clipboard.
+--      Ubuntu: sudo apt-get install vim-gtk
+-- Use ",c" instead... -- 
+vim.opt.clipboard = 'unnamedplus'
 
 
 

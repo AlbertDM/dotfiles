@@ -1,0 +1,13 @@
+diff --git a/lua/plugins/configs/lspconfig.lua b/lua/plugins/configs/lspconfig.lua
+index fbce3a8..d6f6821 100644
+--- a/lua/plugins/configs/lspconfig.lua
++++ b/lua/plugins/configs/lspconfig.lua
+@@ -64,4 +64,8 @@ require("lspconfig").lua_ls.setup {
+   },
+ }
+ 
++local capabilities = vim.lsp.protocol.make_client_capabilities()
++capabilities.offsetEncoding = { "utf-16" }
++require('lspconfig').clangd.setup({capabilities = capabilities})
++
+ return M

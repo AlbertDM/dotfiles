@@ -1,0 +1,70 @@
+# Path to your Oh My Zsh installation
+# export ZSH="/your/oh-my-zsh/path"
+export ZSH=".oh-my-zsh/"
+
+# Theme
+ZSH_THEME="agnoster"
+# ZSH_THEME="random"
+# ZSH_THEME_RANDOM_CANDIDATES=("agnoster" "grml" "robbyrussell")
+
+
+# Plugins
+plugins=(
+  git
+  colored-man-pages
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+
+  #Vojtech Plugins
+  ag
+# TODO: Pending to be installed
+  # autojump
+  # fzf
+  # spellchecker
+
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Custom aliases
+alias ll='ls -alF'
+alias clr='clear'
+alias reload='source ~/.zshrc'
+
+# Set editor (replace with your preferred editor)
+export EDITOR="nvim"
+
+# Prompt settings
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time)
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+
+# Syntax highlighting
+# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Autosuggestions
+# source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Spell checker
+# TODO: Pending to be installed
+# ZSH_SPELLCORRECT_PATH="/path/to/dictionary/file"  # Set the correct path
+# source $ZSH/custom/plugins/spellchecker/spellchecker.plugin.zsh
+
+# Customize your PATH
+export PATH="$HOME/bin:$PATH"
+
+# Other configurations
+# ...
+#
+# Vojtech TODO Notes:
+# * Add code highlighting
+# * Add spell checker
+# * shell to display important system information
+# * ...
+
+

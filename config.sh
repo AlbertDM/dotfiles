@@ -13,8 +13,14 @@
 
 Directory=$(pwd)
 echo $Directory
-## BASH
 
+## BASH
+### Fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip -P ~/Downloads
+#### ZSHRC + oh-my-zsh
+cp ./Raw_files/bashrc ~/.bashrc
+cp ./Raw_files/zshrc ~/.zshrc
+wget https://github.com/ohmyzsh/ohmyzsh.git -P ~./oh-my-zsh
 
 ## GIT
 
@@ -41,7 +47,7 @@ then
 fi
 
 cat ~/git_repos/dotfiles/nvim/init.lua_bak ~/git_repos/dotfiles/nvim_albertdm_patch/lua_init.patch > ~/git_repos/dotfiles/nvim/init.lua
-
+# Apply ~/git_repos/dotfiles/nvim_albertdm_patch/lua_lspconfig.patch > ~/.config/nvim/lua/custom/configs/lspconfig.lua
 
 cp -rf ../nvim_albertdm_patch/albertdm_cfg lua/albertdm_cfg
 
